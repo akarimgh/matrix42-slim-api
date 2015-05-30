@@ -1,26 +1,60 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://marketplace.matrix42.com/slim/api/v1/
 
-# Matrix42 Marketplace
+# Matrix42 Marketplace Slim API v1
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+This API returns all Matrix42 Marketplace Products and Orders to be implemented against, in the Matrix42 Applications. 
 
-# Polls API Root [/]
+# Product API Root [/products]
 
-This resource does not have any attributes. Instead it offers the initial
-API affordances in the form of the links in the JSON body.
+This resource provides all products.
 
-It is recommend to follow the “url” link values,
-[Link](https://tools.ietf.org/html/rfc5988) or Location headers where
-applicable to retrieve resources. Instead of constructing your own URLs,
-to keep your client decoupled from implementation details.
-
-## Retrieve the Entry Point [GET]
+## Retrieve all Products [GET]
 
 + Response 200 (application/json)
 
         {
-            "questions_url": "/questions"
+            "products": [
+                "id": 599,
+                "title": "Dropbox for Business",
+                "description": "<p>Integration of Dropbox for Business in MyWorkspace.</p>"
+                "created_at": "2015-05-22T13:59:53Z",
+                "updated_at": "2015-05-30T22:03:47Z",
+                "type": "simple",
+                "status": "publish",
+                "permalink": "https://local.matrix42.com/product/dropbox-for-business/",
+                "sku": "",
+                "price": "0.00",
+                "related_ids": [
+                    116,
+                    248,
+                    330,
+                    333,
+                    370
+                ],
+                "categories": [
+                    "MyWorkspace"
+                ],
+                "featured_src": "http://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/glyph-vflK-Wlfk.png",
+                "img_screenshots": [
+                    {
+                        "id": 604,
+                        "created_at": "2015-05-19T13:56:52Z",
+                        "updated_at": "2015-05-19T13:56:52Z",
+                        "src": "http://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/glyph-vflK-Wlfk.png",
+                        "title": "glyph-vflK-Wlfk",
+                        "alt": "",
+                      "position": 0
+                    }
+                ],
+                "downloads": [
+                    {
+                       "id": "6713f15bc8abd858f7702c7d36e73e34",
+                       "name": "metadata-1.0.zip",
+                        "file": "https://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/MyWorkspace-DropboxforBusiness-1.00.zip?st=2015-05-30T21%3A48Z&se=2015-05-31T10%3A03Z&sr=b&sp=r&sig=xGuissZyGsphe%2Bjyf3VOhdC08DGNF0nzcDan3Ypq%2BO8%3D&sv=2012-02-12"
+                    }
+                ],
+            ]
         }
 
 ## Group Question
