@@ -8,21 +8,41 @@
 
 namespace matrix42\slim_api;
 
-use Slim\Slim;
+use WC_Product;
+use WP_Query;
+
+require(ABSPATH . "/wp-config.php");
 
 class Matrix42_API_v1
 {
     function __construct()
     {
-        add_action('get_products', array($this, 'get_products'));
+        add_action('get_all_products', array($this, 'get_all_products'));
     }
 
-    function get_products($slim)
+    function get_all_products($slim)
     {
-        echo "TTT";
         $context = $this;
         $slim->get('/slim/api/v1/products', function () use ($context) {
-            echo "TETETET";
+
+            $args = array(
+                'posts_per_page' => -1,
+                'post_type' => 'product'
+            );
+
+            $query = new WP_Query($args);
+            $result = $query->get_posts();
+            $products = array();
+            foreach ($result as $product) {
+                $wcproduct = new WC_Product($product->ID);
+                $mx_product = new Matrix42_Product();
+
+                $mx_product->id = $wcproduct->id;
+                $mx_product->title = $wcproduct->get_title();
+
+                array_push($products, $mx_product);
+            }
+            echo json_encode($products);
         });
     }
 }
