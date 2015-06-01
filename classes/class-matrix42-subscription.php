@@ -2,39 +2,28 @@
 /**
  * Created by PhpStorm.
  * User: fabianhenzler
- * Date: 30/05/15
- * Time: 20:06
+ * Date: 01/06/15
+ * Time: 10:46
  */
 
 namespace matrix42\slim_api;
 
 
-class Matrix42_Product
+class Matrix42_Subscription extends Matrix42_Product
 {
-    public $id;
-    public $title;
-    public $description;
-    public $created_at;
-    public $updated_at;
-    public $type;
-    public $status;
-    public $permalink;
     public $signup_fee;
-    public $sku;
-    public $img_featured;
-    public $img_screenshots = array();
-    public $related_ids = array();
-    public $subscription_Ids = array();
-    public $categories = array();
-    public $downloads = array();
+    public $recurring_fee;
+    public $recurring_interval;
+    public $recurring_interval_type;
 
-    static function get_products($untyped_array_of_products)
+    static function get_subscriptions($untyped_array_of_products)
     {
         $typed_array_of_products = array();
+
         foreach ($untyped_array_of_products as $untyped_product) {
             $wc_product = wc_get_product($untyped_product->ID);
 
-            if (!($wc_product->is_type('subscription'))) {
+            if ($wc_product->is_type('subscription')) {
                 $typed_product = new Matrix42_Product();
 
                 $typed_product->id = $wc_product->id;
@@ -47,14 +36,8 @@ class Matrix42_Product
                 $typed_product->permalink = $wc_product->get_permalink();
                 $typed_product->sku = $wc_product->get_sku();
                 $typed_product->signup_fee = $wc_product->get_price();
-                $typed_product->img_featured = wp_get_attachment_url(get_post_thumbnail_id($wc_product->id));
-
-                $typed_product->img_screenshots = array();
-                $img_screenshots_ids = $wc_product->get_gallery_attachment_ids();
-                foreach($img_screenshots_ids as $img_screenshot_id) {
-                   array_push($typed_product->img_screenshots, wp_get_attachment_url($img_screenshot_id));
-                }
-
+                $typed_product->img_featured = $untyped_product->id;
+                $typed_product->img_screenshots = $untyped_product->id;
                 $typed_product->related_ids = $untyped_product->id;
                 $typed_product->categories = $untyped_product->id;
                 $typed_product->downloads = $untyped_product->id;
