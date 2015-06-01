@@ -10,19 +10,5 @@ namespace matrix42\slim_api;
 
 
 class Matrix42_Product {
-    public $id;
-    public $title;
-    public $description;
-    public $created_at;
-    public $updated_at;
-    public $type;
-    public $status;
-    public $permalink;
-    public $sku;
-    public $price;
-    public $related_ids = array();
-    public $categories = array();
-    public $img_featured;
-    public $img_screenshots = array();
-    public $downloads = array();
+
 }

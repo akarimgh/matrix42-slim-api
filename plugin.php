@@ -37,7 +37,7 @@ add_action('init', function () {
     if (strstr($_SERVER['REQUEST_URI'], get_option('slim_base_path', 'slim/api/v1/'))) {
         $slim = new \Slim\Slim();
 
-        do_action('get_all_products', $slim);
+        do_action('get_products', $slim);
 
         $slim->run();
         exit;
