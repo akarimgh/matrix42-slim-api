@@ -25,17 +25,7 @@ This route provides all products.
                 "permalink": "https://local.matrix42.com/product/dropbox-for-business/",
                 "sku": "",
                 "price": "0.00",
-                "related_ids": [
-                    116,
-                    248,
-                    330,
-                    333,
-                    370
-                ],
-                "categories": [
-                    "MyWorkspace"
-                ],
-                "featured_src": "http://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/glyph-vflK-Wlfk.png",
+                "img_featured": "http://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/glyph-vflK-Wlfk.png",
                 "img_screenshots": [
                     {
                         "id": 604,
@@ -46,6 +36,16 @@ This route provides all products.
                         "alt": "",
                         "position": 0
                     }
+                ],
+                "related_ids": [
+                    116,
+                    248,
+                    330,
+                    333,
+                    370
+                ],
+                "categories": [
+                    "MyWorkspace"
                 ],
                 "downloads": [
                     {
@@ -65,12 +65,22 @@ A Product has the following attributes:
 + title
 + description
 + created_date - An ISO8601 date when the product was created.
-+ 
++ update_at - An ISO8601 date when the product was updated.
++ type - WooCommerce Product type. Simple, Simple Subscription
++ status
++ permalink
++ sku - unique bookkeeping identifier
++ price - The target price without a currency
++ img_featured - The featured image URL
++ img_screenshots - An array with all screenshots
++ related_ids - An array with all ids that are somehow connected with this product
++ categories - An array of all categories
++ downloads - An array with all downloads
 
 + Parameters
     + product_id: 1 (required, number) - ID of the Product in form of an integer
 
-### View a Questions Detail [GET]
+### View a Product Detail [GET]
 
 + Response 200 (application/json)
 
@@ -85,17 +95,7 @@ A Product has the following attributes:
             "permalink": "https://local.matrix42.com/product/dropbox-for-business/",
             "sku": "",
             "price": "0.00",
-            "related_ids": [
-                116,
-                248,
-                330,
-                333,
-                370
-            ],
-            "categories": [
-                "MyWorkspace"
-            ],
-            "featured_src": "http://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/glyph-vflK-Wlfk.png",
+            "img_featured": "http://m42marketplacemediathek.blob.core.windows.net/matrix42-ag/2015/05/glyph-vflK-Wlfk.png",
             "img_screenshots": [
                 {
                     "id": 604,
@@ -106,6 +106,16 @@ A Product has the following attributes:
                     "alt": "",
                     "position": 0
                 }
+            ],
+            "related_ids": [
+                116,
+                248,
+                330,
+                333,
+                370
+            ],
+            "categories": [
+                "MyWorkspace"
             ],
             "downloads": [
                 {
