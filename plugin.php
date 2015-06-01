@@ -17,6 +17,7 @@ require_once 'vendor/slim/slim/Slim/Slim.php';
 require('classes/class-matrix42-api-v1-admin.php');
 
 require('classes/class-matrix42-product.php');
+require('classes/class-matrix42-subscription.php');
 require('classes/class-matrix42-api-v1.php');
 
 \Slim\Slim::registerAutoloader();
@@ -38,6 +39,9 @@ add_action('init', function () {
         $slim = new \Slim\Slim();
 
         do_action('get_products', $slim);
+        do_action('get_product', $slim);
+        do_action('get_subscriptions', $slim);
+        do_action('get_subscription', $slim);
 
         $slim->run();
         exit;
