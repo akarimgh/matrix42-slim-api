@@ -9,6 +9,8 @@
 namespace matrix42\slim_api;
 
 
+use WC_Subscription_Downloads;
+
 class Matrix42_Product
 {
     public $id;
@@ -23,8 +25,7 @@ class Matrix42_Product
     public $sku;
     public $img_featured;
     public $img_screenshots = array();
-    public $related_ids = array();
-    public $subscription_Ids = array();
+    public $subscription_ids = array();
     public $categories = array();
     public $downloads = array();
 
@@ -33,6 +34,7 @@ class Matrix42_Product
         $typed_array_of_products = array();
         foreach ($untyped_array_of_products as $untyped_product) {
             $wc_product = wc_get_product($untyped_product->ID);
+            $post = get_post($untyped_product->ID);
 
             if (!($wc_product->is_type('subscription'))) {
                 $typed_product = new Matrix42_Product();
@@ -55,9 +57,12 @@ class Matrix42_Product
                    array_push($typed_product->img_screenshots, wp_get_attachment_url($img_screenshot_id));
                 }
 
-                $typed_product->related_ids = $untyped_product->id;
-                $typed_product->categories = $untyped_product->id;
-                $typed_product->downloads = $untyped_product->id;
+                $typed_product->subscription_ids = WC_Subscription_Downloads::get_subscriptions($wc_product->id);
+
+                $category_string = $wc_product->get_categories(',__,');
+                $typed_product->categories = explode(',__,', $category_string);
+
+                $typed_product->downloads = $wc_product->get_files();
 
                 array_push($typed_array_of_products, $typed_product);
             }
