@@ -39,7 +39,9 @@ add_action('init', function () {
         $slim = new \Slim\Slim();
 
         do_action('get_products', $slim);
+        do_action('get_product', $slim);
         do_action('get_subscriptions', $slim);
+        do_action('get_subscription', $slim);
 
         $slim->run();
         exit;

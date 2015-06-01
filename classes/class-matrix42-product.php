@@ -34,7 +34,6 @@ class Matrix42_Product
         $typed_array_of_products = array();
         foreach ($untyped_array_of_products as $untyped_product) {
             $wc_product = wc_get_product($untyped_product->ID);
-            $post = get_post($untyped_product->ID);
 
             if (!($wc_product->is_type('subscription'))) {
                 $typed_product = new Matrix42_Product();
