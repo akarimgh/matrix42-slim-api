@@ -1,0 +1,268 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE database SYSTEM "file:///System/Library/DTDs/CoreData.dtd">
+
+<database>
+    <databaseInfo>
+        <version>134481920</version>
+        <UUID>399B98E4-1A6B-4AA3-8EA7-A5509F08F89F</UUID>
+        <nextObjectID>122</nextObjectID>
+        <metadata>
+            <plist version="1.0">
+                <dict>
+                    <key>NSPersistenceFrameworkVersion</key>
+                    <integer>526</integer>
+                    <key>NSStoreModelVersionHashes</key>
+                    <dict>
+                        <key>LMCookieJar</key>
+                        <data>
+		Fttmf2L4PrGvKUF496+nqgVVGek45TjOe7sUMtjNg8I=
+		</data>
+                        <key>LMEnvironment</key>
+                        <data>
+		uzBoVFcO4YvR9/3ej4AJ1UOOsA/u5DKY2aemusoIseU=
+		</data>
+                        <key>LMEnvironmentDomain</key>
+                        <data>
+		yM1GPGHdquS8IWLtuczlNoqKhIhD9FW6IReSfFffJgs=
+		</data>
+                        <key>LMEnvironmentVariable</key>
+                        <data>
+		P8e0lYd5JZKRabS/eXVSOJ4oitilz67xtv+pLqW1Jqg=
+		</data>
+                        <key>LMEnvironmentVariableValue</key>
+                        <data>
+		my5hNPJ51oDCSa8EgdNxWAnRcDLcERUGjtuXnzhSxQ0=
+		</data>
+                        <key>LMKeyValue</key>
+                        <data>
+		bIXXbyYF2xAv2MXg8JTVFsslmMKuvsfnR86QdUcFkdM=
+		</data>
+                        <key>LMRequest</key>
+                        <data>
+		kYB6By9dZHqmH3YNw3h9tYPoxeG5ZWHPfhLXXp7OLFs=
+		</data>
+                        <key>LMRequestGroup</key>
+                        <data>
+		N3ml+gYVWc4m0LSGLnBDJ37p9isOc41y+TtaM0Eacrc=
+		</data>
+                        <key>LMRequestTreeItem</key>
+                        <data>
+		ak+hYb/lDeG55U0kgGvU5ej7HUltUj0RTrX5z/izNrs=
+		</data>
+                    </dict>
+                    <key>NSStoreModelVersionHashesVersion</key>
+                    <integer>3</integer>
+                    <key>NSStoreModelVersionIdentifiers</key>
+                    <array>
+                        <string>LMDocumentVersion3</string>
+                    </array>
+                </dict>
+            </plist>
+        </metadata>
+    </databaseInfo>
+    <object type="LMREQUESTGROUP" id="z102">
+        <attribute name="uuid" type="string">2E0040F8-F466-42F3-9134-5598AB9EF727</attribute>
+        <attribute name="order" type="int64">3</attribute>
+        <attribute name="name" type="string">marketplace-staging</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+    </object>
+    <object type="LMCOOKIEJAR" id="z103">
+        <attribute name="uuid" type="string">4A57F92C-C996-43F7-AED5-23308F6AC762</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">Cookie Jar</attribute>
+    </object>
+    <object type="LMKEYVALUE" id="z104">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z111"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z105">
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z107"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLE" id="z106">
+        <attribute name="uuid" type="string">23101458-0176-45A2-93F2-CB5787642F11</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string"></attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z109"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z117"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z107">
+        <attribute name="uuid" type="string">783A8A19-00A6-4168-81FB-3B0D874E8941</attribute>
+        <attribute name="url" type="string">https://local.matrix42.com/slim/api/v1/subscriptions</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">2</attribute>
+        <attribute name="name" type="string">/subscriptions</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z116"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z105 z120"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z108">
+        <attribute name="value" type="string">application/json</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Content-Type</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z112"></relationship>
+    </object>
+    <object type="LMENVIRONMENTDOMAIN" id="z109">
+        <attribute name="uuid" type="string">5B6140D4-C32C-48ED-89FA-2C4EB30A6ACE</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Default Domain</attribute>
+        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z110"></relationship>
+        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z106"></relationship>
+    </object>
+    <object type="LMENVIRONMENT" id="z110">
+        <attribute name="uuid" type="string">15234758-DB5F-47F2-B24D-A57A25410B11</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">matrix42.com</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z109"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z117"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z111">
+        <attribute name="uuid" type="string">7DD6E8C4-A269-4195-8B8F-A26B78B5D2FC</attribute>
+        <attribute name="url" type="string">https://local.matrix42.com/slim/api/v1/products</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">/products</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z116"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z122 z104"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z112">
+        <attribute name="uuid" type="string">23A5D747-5A7D-40AB-908A-74ECF1DB2A56</attribute>
+        <attribute name="url" type="string">https://local.matrix42.com/slim/api/v1/subscriptions/231</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">3</attribute>
+        <attribute name="name" type="string">/subscriptions/{subscription_id}</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z116"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z118 z108"></relationship>
+    </object>
+    <object type="LMREQUESTGROUP" id="z113">
+        <attribute name="uuid" type="string">75E6E14D-6348-4B42-BD7D-2468F8BEA4E9</attribute>
+        <attribute name="order" type="int64">4</attribute>
+        <attribute name="name" type="string">accounts</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+    </object>
+    <object type="LMREQUESTGROUP" id="z114">
+        <attribute name="uuid" type="string">3EFA7150-03D9-4AA6-B3C4-EEF472D732AA</attribute>
+        <attribute name="order" type="int64">2</attribute>
+        <attribute name="name" type="string">marketplace</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z115">
+        <attribute name="value" type="string">application/json</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Content-Type</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z121"></relationship>
+    </object>
+    <object type="LMREQUESTGROUP" id="z116">
+        <attribute name="uuid" type="string">75AE7535-B6E9-4C8C-8A59-CC178681CEBF</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">local</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z121 z111 z112 z107"></relationship>
+        <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
+        <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z117">
+        <attribute name="value" type="string"></attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z110"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z106"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z118">
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z112"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z119">
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z121"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z120">
+        <attribute name="value" type="string">application/json</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Content-Type</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z107"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z121">
+        <attribute name="uuid" type="string">F60BF2EB-03C4-4F69-8FD0-55F4BA70221C</attribute>
+        <attribute name="url" type="string">https://local.matrix42.com/slim/api/v1/products/599</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">GET</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">/products/{product_id}</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z116"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z119 z115"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z122">
+        <attribute name="value" type="string">application/json</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Content-Type</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z111"></relationship>
+    </object>
+</database>
