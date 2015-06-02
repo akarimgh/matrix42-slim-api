@@ -52,8 +52,8 @@ class Matrix42_Product
 
                 $typed_product->img_screenshots = array();
                 $img_screenshots_ids = $wc_product->get_gallery_attachment_ids();
-                foreach($img_screenshots_ids as $img_screenshot_id) {
-                   array_push($typed_product->img_screenshots, wp_get_attachment_url($img_screenshot_id));
+                foreach ($img_screenshots_ids as $img_screenshot_id) {
+                    array_push($typed_product->img_screenshots, wp_get_attachment_url($img_screenshot_id));
                 }
 
                 $typed_product->subscription_ids = WC_Subscription_Downloads::get_subscriptions($wc_product->id);

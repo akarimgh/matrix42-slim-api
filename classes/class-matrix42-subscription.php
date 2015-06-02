@@ -10,7 +10,6 @@ namespace matrix42\slim_api;
 
 
 use WC_Subscription_Downloads;
-use WC_Subscriptions_Order;
 use WC_Subscriptions_Product;
 
 class Matrix42_Subscription extends Matrix42_Product
@@ -46,7 +45,7 @@ class Matrix42_Subscription extends Matrix42_Product
 
                 $typed_product->img_screenshots = array();
                 $img_screenshots_ids = $wc_product->get_gallery_attachment_ids();
-                foreach($img_screenshots_ids as $img_screenshot_id) {
+                foreach ($img_screenshots_ids as $img_screenshot_id) {
                     array_push($typed_product->img_screenshots, wp_get_attachment_url($img_screenshot_id));
                 }
 
@@ -60,7 +59,7 @@ class Matrix42_Subscription extends Matrix42_Product
                  * Subscription
                  */
 
-                $typed_product->signup_fee =  WC_Subscriptions_Product::get_sign_up_fee($wc_product->id);
+                $typed_product->signup_fee = WC_Subscriptions_Product::get_sign_up_fee($wc_product->id);
                 $typed_product->recurring_fee = WC_Subscriptions_Product::get_price($wc_product->id);
                 $typed_product->recurring_interval = WC_Subscriptions_Product::get_interval($wc_product->id);
                 $typed_product->recurring_period = WC_Subscriptions_Product::get_period($wc_product->id);
