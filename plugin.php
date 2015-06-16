@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Matrix42 Slim API
-Plugin URI: https://marketplace.matrix42.com/api/
+Plugin URI: https://marketplace.matrix42.com/slim/api/v1
 Description: An API to work with the Marketplace Data
 Author: Fabian Henzler
 Version: 1.0.0
@@ -18,6 +18,8 @@ require('classes/class-matrix42-api-v1-admin.php');
 
 require('classes/class-matrix42-product.php');
 require('classes/class-matrix42-subscription.php');
+require('classes/class-matrix42-order.php');
+require('classes/class-matrix42-customer.php');
 require('classes/class-matrix42-api-v1.php');
 
 \Slim\Slim::registerAutoloader();
@@ -42,6 +44,9 @@ add_action('init', function () {
         do_action('get_product', $slim);
         do_action('get_subscriptions', $slim);
         do_action('get_subscription', $slim);
+        do_action('get_orders', $slim);
+        do_action('get_order', $slim);
+        do_action('get_order_downloads', $slim);
 
         $slim->run();
         exit;
