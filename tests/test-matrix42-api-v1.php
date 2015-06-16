@@ -8,6 +8,8 @@
 
 namespace matrix42\slim_api\tests;
 
+require_once('../vendor/autoload.php');
+
 use PHPUnit_Framework_TestCase;
 
 class Matrix42_API_v1_Test extends PHPUnit_Framework_TestCase {
