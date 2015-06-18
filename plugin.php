@@ -36,7 +36,7 @@ add_filter('rewrite_rules_array', function ($rules) {
     return $rules;
 });
 
-add_action('init', function () {
+add_action('wp_loaded', function () {
     if (strstr($_SERVER['REQUEST_URI'], get_option('slim_base_path', 'slim/api/v1/'))) {
         $slim = new \Slim\Slim();
 

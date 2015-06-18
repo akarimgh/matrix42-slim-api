@@ -93,11 +93,11 @@ class Matrix42_Product
         $typed_product->os = explode(', ', $wc_product->get_attribute('os'));
 
 
-        //$typed_product->vendor = get_product_vendors($wc_product->id);
+        $typed_product->vendor = get_product_vendors($wc_product->id);
         /*
          * Intermediate Solution to get the Product Vendor because get_product_vendor seems not to work
          */
-        global $wpdb;
+        /*global $wpdb;
         $sql = "
                     SELECT ter.name as vendor_name
                     FROM mpma_term_taxonomy tax
@@ -106,7 +106,7 @@ class Matrix42_Product
                     INNER JOIN mpma_posts p ON rel.object_id = p.id
                     WHERE tax.taxonomy = 'shop_vendor' AND p.id = $wc_product->id
                 ";
-        $typed_product->vendor = $wpdb->get_results($sql);
+        $typed_product->vendor = $wpdb->get_results($sql);*/
 
         $typed_product->tags = explode(',__,', $wc_product->get_tags(',__,', '', ''  ));
 
