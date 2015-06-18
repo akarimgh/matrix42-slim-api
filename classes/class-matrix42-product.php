@@ -92,23 +92,19 @@ class Matrix42_Product
         $typed_product->software_vendor = explode(', ', $wc_product->get_attribute('software-vendor'));
         $typed_product->os = explode(', ', $wc_product->get_attribute('os'));
 
-
         $typed_product->vendor = get_product_vendors($wc_product->id);
-        /*
-         * Intermediate Solution to get the Product Vendor because get_product_vendor seems not to work
-         */
-        /*global $wpdb;
-        $sql = "
-                    SELECT ter.name as vendor_name
-                    FROM mpma_term_taxonomy tax
-                    INNER JOIN mpma_terms ter ON tax.term_id = ter.term_id
-                    INNER JOIN mpma_term_relationships rel ON tax.term_taxonomy_id = rel.term_taxonomy_id
-                    INNER JOIN mpma_posts p ON rel.object_id = p.id
-                    WHERE tax.taxonomy = 'shop_vendor' AND p.id = $wc_product->id
-                ";
-        $typed_product->vendor = $wpdb->get_results($sql);*/
-
-        $typed_product->tags = explode(',__,', $wc_product->get_tags(',__,', '', ''  ));
+        foreach($typed_product->vendor as $vendor) {
+            unset($vendor->slug);
+            unset($vendor->description);
+            unset($vendor->paypal_email);
+            unset($vendor->admin);
+            unset($vendor->admins);
+            unset($vendor->image_hash);
+            unset($vendor->image);
+            unset($vendor->phone);
+            unset($vendor->fax);
+        }
+        $typed_product->tags = array_filter(explode(',__,', $wc_product->get_tags(',__,', '', ''  )));
 
         return $typed_product;
     }

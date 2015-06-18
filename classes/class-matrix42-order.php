@@ -62,16 +62,17 @@ class Matrix42_Order
         return $typed_array_of_products;
     }
 
-    public static function get_order_downloads($order)
+    static function get_order_downloads($order)
     {
         $downloads = array();
 
-        $order_items = $order['order_items'];
-
-        foreach($order_items as $order_item) {
-            $product = wc_get_product($order_item->id);
-            array_push($downloads, $product->get_files());
-        }
+	    foreach($order as $o) {
+	        $order_items = $o->order_items;
+	        foreach($order_items as $order_item) {
+	            $product = wc_get_product($order_item['product_id']);
+	            array_push($downloads, $product->get_files());
+	        }
+	    }
 
         return $downloads;
     }
