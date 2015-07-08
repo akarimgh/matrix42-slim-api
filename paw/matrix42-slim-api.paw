@@ -533,7 +533,7 @@
     </object>
     <object type="LMREQUEST" id="z149">
         <attribute name="uuid" type="string">E915CCF6-B81A-4193-8822-6E80652D7D0D</attribute>
-        <attribute name="url" type="string">https://accounts.matrix42.com/api/session/profile</attribute>
+        <attribute name="url" type="string">https://accounts-api.matrix42.com/api/session/profile</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
