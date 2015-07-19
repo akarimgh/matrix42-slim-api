@@ -9,6 +9,7 @@
 namespace matrix42\slim_api;
 
 use WC_Subscription_Downloads;
+use WP_Query;
 
 class Matrix42_Product
 {
@@ -36,6 +37,26 @@ class Matrix42_Product
     public $vendor;
     public $tags;
 
+    static function get_product($product_id)
+    {
+        /*
+         * Get one specific posts of type product
+         */
+        $args = array(
+            'post_type' => 'product',
+            'p' => $product_id
+        );
+        $query_results = new WP_Query($args);
+        $query_posts = $query_results->get_posts();
+
+        /*
+         * create a new array of products out of the query results
+         */
+        $results = self::get_products($query_posts);
+        
+        return count($results) > 0 ? $results[0] : $results;
+    }
+
     static function get_products($untyped_array_of_products)
     {
         $typed_array_of_products = array();
@@ -53,6 +74,51 @@ class Matrix42_Product
         }
         return $typed_array_of_products;
     }
+
+    /**
+     * @param $product_id
+     * @param $downloads
+     * @return $files (all product downloads)
+     */
+    static function post_downloads($product_id, $downloads)
+    {
+        // $filename should be the path to a file in the upload directory.
+        // example $filename = 'woocommerce_uploads/2015/07/aka_Matrix42_Tool_CleanDatabase_7.2.1.20150625.aka.zip';        
+        $downloads = json_decode($downloads);
+
+        // Get all existing post downloads and add the new passed downloads
+        $files = array();
+        $result_all_files = array();
+        $wc_product = wc_get_product($product_id);
+        $untyped_array_of_downloads =  $wc_product->get_files();        
+        foreach ($untyped_array_of_downloads as $download_key => $download_value) { 
+            // Add existing download to the $files array
+            $existing_download = (object)$download_value;
+
+            $files[md5($existing_download->file)] = array( 
+               'name' => $existing_download->name, 
+               'file' => $existing_download->file
+            );
+        }
+
+        foreach ($downloads as $key => $new_download) {
+            // Add the new downloads to the existing post downloads 
+            $files[md5($new_download->file)] = array( 
+               'name' => $new_download->name, 
+               'file' => $new_download->file 
+            );
+        }        
+
+        // Update product post meta (_downloadable_files) 
+        update_post_meta($product_id, '_downloadable_files', $files);
+
+        // Collect downloads just for function result
+        foreach ($files as $key => $download) {
+            array_push($result_all_files, $download);
+        }
+
+        return $result_all_files;
+    }    
 
     /**
      * @param $wc_product
@@ -84,7 +150,16 @@ class Matrix42_Product
         $category_string = $wc_product->get_categories(',__,');
         $typed_product->categories = explode(',__,', $category_string);
 
-        $typed_product->downloads = $wc_product->get_files();
+        // Downloads
+        // Use directly the download object without the object name with a Guid
+        // Required for creation of the .net class from json
+        $typed_array_of_downloads = array();
+        $untyped_array_of_downloads =  $wc_product->get_files();
+        foreach ($untyped_array_of_downloads as $download) {
+            array_push($typed_array_of_downloads, $download);
+        }
+        $typed_product->downloads = $typed_array_of_downloads;
+        
         $typed_product->platform = explode(', ', $wc_product->get_attribute('platform'));
         $typed_product->version = explode(', ', $wc_product->get_attribute('version'));
         $typed_product->service_store_compatibility = explode(', ', $wc_product->get_attribute('service-store-compatibility'));

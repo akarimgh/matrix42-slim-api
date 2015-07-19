@@ -9,6 +9,7 @@
 namespace matrix42\slim_api;
 
 use WC_Subscriptions_Product;
+use WP_Query;
 
 class Matrix42_Subscription extends Matrix42_Product
 {
@@ -43,5 +44,25 @@ class Matrix42_Subscription extends Matrix42_Product
 
         }
         return $typed_array_of_products;
+    }
+
+    static function get_subscription($subscription_id)
+    {
+        /*
+         * Get one specific posts of type subscription
+         */
+        $args = array(
+            'post_type' => 'product',
+            'p' => $subscription_id
+        );
+        $query_results = new WP_Query($args);
+        $query_posts = $query_results->get_posts();
+
+        /*
+         * create a new array of subscription out of the query results
+         */
+        $results = self::get_subscriptions($query_posts);
+
+        return count($results) > 0 ? $results[0] : $results;
     }
 }

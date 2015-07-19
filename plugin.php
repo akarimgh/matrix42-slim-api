@@ -20,6 +20,7 @@ require('classes/class-matrix42-product.php');
 require('classes/class-matrix42-subscription.php');
 require('classes/class-matrix42-order.php');
 require('classes/class-matrix42-customer.php');
+require('classes/class-matrix42-attachment.php');
 require('classes/class-matrix42-api-v1.php');
 
 \Slim\Slim::registerAutoloader();
@@ -47,6 +48,12 @@ add_action('wp_loaded', function () {
         do_action('get_orders', $slim);
         do_action('get_order', $slim);
         do_action('get_order_downloads', $slim);
+
+        do_action('post_product_downloads', $slim);
+        do_action('post_subscription_downloads', $slim);
+        
+        do_action('get_attachments', $slim);
+        do_action('post_attachment', $slim);
 
         $slim->run();
         exit;
